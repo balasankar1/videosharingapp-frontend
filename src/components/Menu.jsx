@@ -17,12 +17,13 @@ import FlagIcon from "@mui/icons-material/Flag";
 import HelpIcon from "@mui/icons-material/Help";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 const Container = styled.div`
   flex: 1;
-  background-color: #202020;
+  background-color: ${({ theme }) => theme.bg};
   ${"" /* height: 100vh; */}
-  color: white;
-  font-size: 14px;
+  color: ${({ theme }) => theme.text};
+  font-size: 13.5px;
   font-weight: normal;
   position: sticky;
   top: 0;
@@ -37,7 +38,7 @@ const Item = styled.div`
 
 const Hr = styled.hr`
   margin: 15px 0;
-  border: 0.5px solid #373737;
+  border: 0.5px solid ${({ theme }) => theme.soft};
 `;
 
 const Login = styled.div``;
@@ -68,7 +69,14 @@ const Img = styled.img`
   height: 25px;
 `;
 
-const Menu = () => {
+const Title = styled.h2`
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 20px;
+`;
+
+const Menu = ({ darkMode, setDarkMode }) => {
   return (
     <Container>
       <Wrapper>
@@ -105,6 +113,8 @@ const Menu = () => {
             SIGN IN
           </Button>
         </Login>
+        <Hr />
+        <Title>Best of Youtube</Title>
         <Item>
           <MusicNoteIcon />
           Music
@@ -142,9 +152,9 @@ const Menu = () => {
           <HelpIcon />
           Help
         </Item>
-        <Item>
+        <Item onClick={() => setDarkMode(!darkMode)}>
           <SettingsBrightnessIcon />
-          DarkMode
+          ChangeMode
         </Item>
       </Wrapper>
     </Container>
